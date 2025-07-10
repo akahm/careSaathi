@@ -1,0 +1,14 @@
+this is for email smtp 
+brevo-300 emails/day free
+sendgrid-100/day in free plan
+amazon ses-cheapest good for long term setup may be big time consuming
+
+errors/bugs i think there are in deployed version
+
+1.login button stretches too much flex lagao 3/4  karo width in pc -errors
+2.login companion in care logo should be in more middle of the left side screen its currently tilted towards extreme left-error
+3.at extreme down in careers wala page not responding to change in theme
+4.blog page me insights kata hua he
+5.when u select things accidentaly the selected color is in  white ,idk if its imp or not
+6.sign up ya login page not working in desktop
+sm,md,lg,xl,2xl
