@@ -4,13 +4,8 @@ import { useState, FormEvent, ComponentType } from "react";
 import { motion } from "framer-motion";
 import {
   MapPin,
-  Clock,
-  Users,
-  Heart,
   ArrowRight,
-  Briefcase,
-  GraduationCap,
-  Star,
+  Search,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,7 +14,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/ui/navbar";
 
-// Define interfaces for props and data structures
 interface Job {
   id: string;
   title: string;
@@ -38,12 +32,6 @@ interface ModalProps {
   onSubmit: (formData: FormData) => void;
   jobTitle: string;
   darkMode: boolean;
-}
-
-interface Benefit {
-  icon: ComponentType<any>;
-  title: string;
-  description: string;
 }
 
 function Modal({ isOpen, onClose, onSubmit, jobTitle, darkMode }: ModalProps) {
@@ -86,8 +74,9 @@ function Modal({ isOpen, onClose, onSubmit, jobTitle, darkMode }: ModalProps) {
 export default function CareersPage() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const [darkMode, setDarkMode] = useState(false); // Kept for modal styling consistency
+  const [darkMode, setDarkMode] = useState(false);
 
+  // Sample data
   const jobOpenings: Job[] = [
     {
       id: "1",
@@ -105,13 +94,21 @@ export default function CareersPage() {
       ],
       featured: true,
     },
-  ];
-
-  const benefits: Benefit[] = [
+    //added another one testing the spacing and grid position
     {
-      icon: Heart,
-      title: "Health & Wellness",
-      description: "Comprehensive health insurance for you and your family, mental health support, and wellness programs.",
+      id: "2",
+      title: "Physiotherapist - Rehabilitation",
+      department: "Therapy",
+      location: "Pune",
+      type: "Part-time",
+      experience: "2+ years",
+      description: "Develop and implement physiotherapy programs for post-operative patients at home.",
+      requirements: [
+        "Bachelor's in Physiotherapy (BPT)",
+        "Strong clinical assessment skills",
+        "Experience in neuro-rehabilitation",
+      ],
+      featured: false,
     },
   ];
 
@@ -135,15 +132,13 @@ export default function CareersPage() {
   };
 
   const [searchTerm, setSearchTerm] = useState("");
+  
+  // Note: The filter UI is not implemented right now, but the logic is here for future use.
   const [filters, setFilters] = useState<{ [key: string]: string }>({
     department: "All",
     location: "All",
     type: "All",
   });
-
-  const handleFilterChange = (value: string, key: string) => {
-    setFilters((prev) => ({ ...prev, [key]: value }));
-  };
 
   const filteredJobs = jobOpenings
     .filter(job =>
@@ -159,9 +154,10 @@ export default function CareersPage() {
   return (
     <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-black'}`}>
       <Navbar />
-      <main className="container mx-auto px-4 py-24">
-        <section className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-red-500">
+      <main className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
+        {/* === Hero Section: improved the spacing an text clipping problem*/}
+        <section className="text-center mb-16 md:mb-20">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-red-500 pt-4 pb-2">
               Find Your Calling with CareSaathi
             </h1>
             <p className="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-300">
@@ -169,53 +165,65 @@ export default function CareersPage() {
             </p>
         </section>
 
-        <section className="mb-12 p-6 bg-white dark:bg-slate-800 rounded-lg shadow-md">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <input
-                    type="text"
-                    placeholder="Search by keyword..."
-                    className="md:col-span-2 p-3 border rounded-md dark:bg-slate-700 dark:border-slate-600"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
+        {/* === Current Openings Section: made it look better with the box around it*/}
+        <section className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700">
+          {/* Section Header: Title and Search Bar */}
+          <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
+            <h2 className="text-4xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-red-500 pb-2">
+              Current Openings
+            </h2>
+            <div className="relative w-full md:w-auto md:min-w-[300px]">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search by keyword..."
+                className="w-full p-3 pl-10 border rounded-md text-black placeholder:text-slate-400 bg-slate-50 dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
-        </section>
+          </div>
 
-        <section>
-            <h2 className="text-3xl font-bold mb-8 text-center">Current Openings</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {filteredJobs.map((job) => (
-                <Card key={job.id} className={`flex flex-col ${darkMode ? 'bg-slate-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-shadow duration-300`}>
-                  <CardHeader>
-                    <CardTitle className="text-blue-600 dark:text-blue-400">{job.title}</CardTitle>
-                    <div className="flex flex-wrap gap-2 text-sm mt-2">
-                        <Badge variant={job.featured ? "default" : "secondary"}>{job.type}</Badge>
-                        <Badge variant="outline">{job.department}</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <div className="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-4">
-                        <MapPin className="w-4 h-4 mr-2" /> {job.location}
-                    </div>
-                    <p className="mb-4">{job.description}</p>
-                    <h4 className="font-semibold mb-2">Requirements:</h4>
-                    <ul className="list-disc list-inside text-sm space-y-1">
-                        {job.requirements.map((req, i) => <li key={i}>{req}</li>)}
-                    </ul>
-                  </CardContent>
-                  <div className="p-6 pt-0">
-                    <Button onClick={() => handleApplyClick(job)} className="w-full">
-                        Apply Now <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+          {/* Job Listings Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredJobs.map((job) => (
+              <Card key={job.id} className={`flex flex-col ${darkMode ? 'bg-slate-900/50' : 'bg-white'} shadow-lg hover:shadow-xl transition-shadow duration-300 border dark:border-slate-700`}>
+                <CardHeader>
+                  <CardTitle className="text-blue-600 dark:text-blue-400">{job.title}</CardTitle>
+                  <div className="flex flex-wrap gap-2 text-sm mt-2">
+                      <Badge variant={job.featured ? "default" : "secondary"}>{job.type}</Badge>
+                      <Badge variant="outline">{job.department}</Badge>
                   </div>
-                </Card>
-              ))}
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <div className="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-4">
+                    <MapPin className="w-4 h-4 mr-2" /> {job.location}
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">{job.description}</p>
+                  <h4 className="font-semibold mb-2">Requirements:</h4>
+                  <ul className="list-disc list-inside text-sm space-y-1 text-slate-500 dark:text-slate-400">
+                    {job.requirements.map((req, i) => <li key={i}>{req}</li>)}
+                  </ul>
+                </CardContent>
+                <div className="p-6 pt-0 mt-4">
+                  <Button onClick={() => handleApplyClick(job)} className="w-full">
+                      Apply Now <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Message for No Results */}
+          {filteredJobs.length === 0 && (
+            <div className="text-center py-16">
+              <h3 className="text-xl font-semibold mb-2">No matching jobs found</h3>
+              <p className="text-slate-500 dark:text-slate-400">Please try a different keyword or check back later.</p>
             </div>
-            {filteredJobs.length === 0 && (
-                <p className="text-center text-slate-500 dark:text-slate-400 mt-8">No matching job openings found. Please try different filters.</p>
-            )}
+          )}
         </section>
       </main>
+
       {selectedJob && (
         <Modal
           isOpen={isModalOpen}
