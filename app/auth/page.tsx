@@ -77,7 +77,7 @@ const AuthForm = () => {
           title: "Login successful",
           text: "Welcome back!",
         });
-        router.push("/dashboard");
+        router.push("/Admin/dashboard");
       } else {
         Swal.fire({
           icon: "warning",
@@ -100,10 +100,11 @@ const AuthForm = () => {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 overflow-hidden">
+    <div className="min-h-screen flex  justify-center bg-white dark:bg-gray-900 overflow-hidden">
 
       {/* Left Side - Poster */}
-      <div className="hidden lg:flex w-1/2 relative  ">
+      <div className="hidden lg:flex w-1/2 relative   ">
+     
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -111,13 +112,14 @@ const AuthForm = () => {
         //   backgroundImage: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=1920&q=80')
         // }}
         />
-
+           
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-red-900/70 to-blue-900/90" />
-
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-red-900/70 to-blue-900/90 " />
+        
+       <div className='flex justify-center content-center'>
         {/* Content Overlay */}
-        <div className="relative z-10 flex flex-col justify-center items-center text-white p-7 text-center">
-          <div className="max-w-md space-y-6">
+        <div className="relative z-10  flex  justify-center items-center text-white p-7 text-center">
+          <div className=" space-y-6">
             {/* Logo/Icon */}
             <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-8">
               <Heart className="w-10 h-10 text-white" />
@@ -156,13 +158,16 @@ const AuthForm = () => {
             </div>
           </div>
         </div>
+        </div>
       </div>
+      
 
 
       {/* Right Side - Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center ">
         <div className="w-full ">
-          <Card className=" rounded-none border-blue-100 dark:border-gray-700 shadow-2xl bg-white/95 dark:bg-gray-800/95">
+           <div className='flex justify-center content-center'>
+          <Card className=" w-full sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-2/3 rounded-none border-blue-100 dark:border-gray-700 shadow-2xl bg-white/95 dark:bg-gray-800/95">
             <CardHeader className="text-center pb-6">
               <div className="flex justify-between items-center mb-4">
                 <div className="mx-auto w-12 h-12 bg-gradient-to-r from-red-500 to-blue-600 rounded-full flex items-center justify-center lg:hidden">
@@ -304,6 +309,7 @@ const AuthForm = () => {
               </div>
             </CardContent>
           </Card>
+          </div>
         </div>
       </div>
     </div>

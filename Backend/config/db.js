@@ -1,7 +1,5 @@
-
 const sql = require("mssql");
 require("dotenv").config({ path: require('path').resolve(__dirname, '../../.env') }); 
-
 
 
 
@@ -35,4 +33,5 @@ module.exports = {
   sql,
   poolPromise
 };
+
 

@@ -25,7 +25,7 @@ import {
 
 export default function Footer() {
   return (
-<footer className="relative bg-gradient-to-br from-blue-900 to-red-900 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-blue-900 to-red-900 text-white overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -69,16 +69,16 @@ export default function Footer() {
         </motion.div>
       </div>
 
-      <div className="relative px-4 py-16">
+      <div className="relative px-4 py-10">
         <div className="container mx-auto text-center">
           {/* Brand & CTA */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-10"
           >
-            <motion.div whileHover={{ scale: 1.05 }} className="inline-block mb-6">
+            <motion.div whileHover={{ scale: 1.05 }} className="inline-block mb-3">
               <Image
                 src="/footerlogonew.svg"
                 alt="CareSaathi Logo"
@@ -93,7 +93,7 @@ export default function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent mb-4"
+              className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent mb-2"
             >
               "Jahan Care sirf Service nahi, Saathi ban jaata hai"
             </motion.h3>
@@ -109,28 +109,11 @@ export default function Footer() {
             </motion.p>
 
             {/* Emergency CTA */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, type: "spring" }}
-              className="inline-flex items-center space-x-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-full shadow-2xl hover:shadow-red-500/25 transition-all duration-300 transform hover:scale-105 mx-auto"
-            >
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <FaPhoneAlt className="w-6 h-6" />
-              </motion.div>
-              <div className="text-left">
-                <p className="text-sm font-medium">24/7 Emergency Helpline</p>
-                <p className="text-xl font-bold">+91 7084910836</p>
-              </div>
-            </motion.div>
+            
           </motion.div>
 
           {/* Footer Links Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16 text-left max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-8 text-left max-w-6xl mx-auto">
             {/* Main Pages */}
             <div>
               <h4 className="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2">
@@ -213,100 +196,101 @@ export default function Footer() {
                 Connect
               </h4>
               {/* Email */}
-<div className="flex items-center space-x-3 text-slate-300 mb-6 justify-start">
-  <a
-    href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@caresaathi.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-red-400 transition-colors text-sm"
-  >
-    ✉️ hello@caresaathi.com
-  </a>
-</div>
+              <div className="flex items-center space-x-3 text-slate-300 mb-6 justify-start">
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@caresaathi.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-400 transition-colors text-sm"
+                >
+                  ✉️ hello@caresaathi.com
+                </a>
+              </div>
 
- {/* Download Buttons */}
-  <div className="flex flex-col -ml-3 md:flex-row items-start gap-4">
-    {/* Google Play Button */}
-    <DialogFooter
-      triggerLabel={
-        <img
-          src="/google-play.png"
-          alt="Get it on Google Play"
-          className="h-14 w-auto max-w-[180px]"
-        />
-      }
-    />
+              {/* Download Buttons */}
+              <div className="flex flex-col -ml-3 md:flex-row items-start gap-4">
+                {/* Google Play Button */}
+                <DialogFooter
+                  triggerLabel={
+                    <img
+                      src="/google-play.png"
+                      alt="Get it on Google Play"
+                      className="h-14 w-auto max-w-[180px]"
+                    />
+                  }
+                />
 
-    {/* App Store Button */}
-    <DialogFooter
-      triggerLabel={
-        <img
-          src="/app-store.png"
-          alt="Download on the App Store"
-          className="h-14 w-auto max-w-[180px]"
-        />
-      }
-    />
-  </div>
+                {/* App Store Button */}
+                <DialogFooter
+                  triggerLabel={
+                    <img
+                      src="/app-store.png"
+                      alt="Download on the App Store"
+                      className="h-14 w-auto max-w-[180px]"
+                    />
+                  }
+                />
+              </div>
+              
 
-{/* Follow Us Section - Positioned after Google Play in mobile view */}
-<div className="w-full order-5 sm:mt-0 sm:order-none mt-8 ">
-  <div className="flex flex-col items-center sm:items-center">
-    <p className="text-slate-300 font-medium mb-3">Follow Us</p>
-    <div className="flex space-x-4">
-      <a
-        href="https://www.facebook.com/people/Caresaathi/61577145807693/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-        className="p-2 bg-blue-700 hover:bg-blue-800 rounded-full transition-colors"
-      >
-        <FaFacebookF className="w-4 h-4" />
-      </a>
-      <a
-        href="https://x.com/CareSaathi"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Twitter"
-        className="p-2 bg-blue-500 hover:bg-blue-600 rounded-full transition-colors"
-      >
-        <FaTwitter className="w-4 h-4" />
-      </a>
-      <a
-        href="https://www.instagram.com/caresaathi_/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        className="p-2 bg-red-600 hover:bg-red-700 rounded-full transition-colors"
-      >
-        <FaInstagram className="w-4 h-4" />
-      </a>
-      <a
-        href="https://linkedin.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-        className="p-2 bg-blue-800 hover:bg-blue-900 rounded-full transition-colors"
-      >
-        <FaLinkedinIn className="w-4 h-4" />
-      </a>
-    </div>
-  </div>
-</div>
+              {/* Follow Us Section - Positioned after Google Play in mobile view */}
+              <div className="w-full order-5 sm:mt-0 sm:order-none mt-8 ">
+                <div className="flex flex-col items-center sm:items-center">
+                  <p className="text-slate-300 font-medium mb-2 mt-1">Follow Us</p>
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://www.facebook.com/people/Caresaathi/61577145807693/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                      className="p-2 bg-blue-700 hover:bg-blue-800 rounded-full transition-colors"
+                    >
+                      <FaFacebookF className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="https://x.com/CareSaathi"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Twitter"
+                      className="p-2 bg-blue-500 hover:bg-blue-600 rounded-full transition-colors"
+                    >
+                      <FaTwitter className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/caresaathi_/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="p-2 bg-red-600 hover:bg-red-700 rounded-full transition-colors"
+                    >
+                      <FaInstagram className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      className="p-2 bg-blue-800 hover:bg-blue-900 rounded-full transition-colors"
+                    >
+                      <FaLinkedinIn className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-{/* Legal Links */}
-<div className="mb-8">
-  <div className="flex justify-center space-x-6 text-slate-300 text-sm">
-    <Link href="/terms" className="hover:text-red-400 transition-colors">
-      Terms and Conditions
-    </Link>
-    <span>|</span>
-    <Link href="/privacy" className="hover:text-red-400 transition-colors">
-      Privacy Policy
-    </Link>
-  </div>
-</div>
+          {/* Legal Links */}
+          <div className="mb-4">
+            <div className="flex justify-center space-x-6 text-slate-300 text-sm">
+              <Link href="/terms" className="hover:text-red-400 transition-colors">
+                Terms and Conditions
+              </Link>
+              <span>|</span>
+              <Link href="/privacy" className="hover:text-red-400 transition-colors">
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
 
           {/* Bottom Section */}
           <motion.div
@@ -348,8 +332,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="text-center text-xs text-gray mt-0 py-0 pb-2">
-  Designed & Developed by Team CareSaathi
-</div>
+        Designed & Developed by Team CareSaathi
+      </div>
     </footer>
   );
 }

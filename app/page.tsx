@@ -34,7 +34,7 @@ export default function HomePage() {
       {/* Footer Section */}
       <Footer />
 
-      {/* ✅ Floating Chat Buttons */}
+      {/*  Floating Chat Buttons */}
       <FloatingChatButtons />
     </div>
   );

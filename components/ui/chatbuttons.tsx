@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaRobot, FaWhatsapp } from "react-icons/fa";
 import ComingSoonDialog from "@/components/ComingSoonDialog";
+import { PhoneCall } from 'lucide-react';
 
 export default function FloatingChatButtons() {
   const [visible, setVisible] = useState(true);
@@ -22,13 +23,13 @@ export default function FloatingChatButtons() {
   }, [lastScrollY]);
 
   const buttons = [
-    // {
-    //   label: "ChatBot",
-    //   showDialog: true,
-    //   icon: <FaRobot size={28} />,
-    //   bgFrom: "from-indigo-500",
-    //   bgTo: "to-purple-600",
-    // },
+    {
+      label: "Emergency Support",
+      showDialog: true,
+      icon: <PhoneCall size={28} />,
+      bgFrom: "from-red-500",
+      bgTo: "to-red-600",
+    },
     {
       label: "WhatsApp",
       href: "https://wa.me/7084910836",
@@ -52,15 +53,13 @@ export default function FloatingChatButtons() {
             <div key={index} className="group relative">
               {btn.showDialog ? (
                 <ComingSoonDialog
-  triggerIcon={
-    <div className="flex flex-col items-center justify-center gap-1">
-      <FaRobot size={28} />
-    </div>
-  }
-  className={`
+                  triggerIcon={<div className="flex flex-col items-center justify-center gap-1">
+                    <PhoneCall size={28} />
+                  </div>}
+                  className={`
     w-16 h-16
     rounded-full 
-    bg-gradient-to-br from-indigo-500 to-purple-600 
+    bg-gradient-to-br from-red-600 to-red-700 
     backdrop-blur-lg 
     border border-white/10 
     hover:scale-105 
@@ -68,8 +67,7 @@ export default function FloatingChatButtons() {
     shadow-[0_4px_15px_rgba(0,0,0,0.3)] 
     flex items-center justify-center 
     text-white text-center p-2
-  `}
-/>
+  `} triggerLabel={undefined} />
 
               ) : btn.href ? (
                 <Link
@@ -91,12 +89,12 @@ export default function FloatingChatButtons() {
 
               {/* Tooltip */}
               <motion.span
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 10 }}
-              className="absolute right-20 top-1/2 -translate-y-1/2 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg max-w-[120px] break-words text-center"
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 10 }}
+                className="absolute right-20 top-1/2 -translate-y-1/2 bg-black/80 text-white text-xs px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg max-w-[120px] break-words text-center"
               >
-             {btn.label}
+                {btn.label}
               </motion.span>
 
             </div>

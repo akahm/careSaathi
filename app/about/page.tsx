@@ -12,6 +12,8 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 import Navbar from "@/components/ui/navbar"
 import Stats from "@/components/ui/stats"
 import ComingSoonDialog from "@/components/ComingSoonDialog"
+import Header from "@/components/ui/header"
+import Footer2 from "@/components/ui/footer2"
 
 export default function AboutPage() {
   const [darkMode, setDarkMode] = useState(false)
@@ -49,8 +51,9 @@ export default function AboutPage() {
 
   return (
     <>
-    <Navbar/>
-    <div className="pt-[0px] min-h-screen bg-gradient-to-br bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 shadow-lg">
+    <Header/>
+    <div className="relative overflow-hidden w-full bg-gradient-to-br bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50
+       dark:border-slate-700/50 shadow-lg">
       {/* Header */}
      
           
@@ -58,7 +61,7 @@ export default function AboutPage() {
 
       {/* Hero Section */}
       <section className="pt-20 pb-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br "></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-br "></div> */}
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -218,9 +221,9 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Timeline Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
+         {/* Timeline Section */}
+        <section className="py-0">
+          <div className="container mx-auto px-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -248,12 +251,12 @@ export default function AboutPage() {
                     className={`relative flex items-center mb-4 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
                   >
                     <div className={`w-1/2 ${index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"}`}>
-                      <Card className="bg-white dark:bg-slate-800/50 shadow-[4px_4px_10px_rgba(59,130,246,0.15),_-4px_-4px_10px_rgba(239,68,68,0.15)] border-0 dark:border dark:border-slate-700/50">
+                      <Card className="bg-white dark:bg-slate-800/50 shadow-[4px_4px_10px_rgba(59,130,246,0.15),_-4px_-4px_10px_rgba(239,68,68,0.15)] border-0 dark:border dark:border-slate-700/50 ">
                         <CardContent className="p-6">
                           <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent mb-2">
                             {milestone.year}
                           </div>
-                          <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4">{milestone.title}</h3>
+                          <h3 className="lg:text-2xl md:text-xl sm:text-xl font-bold text-slate-800 dark:text-slate-200 lg:mb-2">{milestone.title}</h3>
                           <p className="text-slate-600 dark:text-slate-300">{milestone.description}</p>
                         </CardContent>
                       </Card>
@@ -264,11 +267,89 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> 
 
         {/* Stats Section */}
         <Stats />
+         {/* CTA Section */}
+      <section className="py-10">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto space-y-8"
+          >
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent">
+              Join Our Mission
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300">
+              Be part of the movement that's transforming healthcare in India. Together, we can ensure no one faces
+              health challenges alone.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="border-red-600 bg-red-600  hover:bg-red-700 hover:text-white px-8 py-4 dark:text-white">
+                    <Heart className="w-5 h-5 mr-2" />
+                    Get Started Today
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="w-[90%] rounded-sm flex flex-col items-center justify-center text-cente p-8  dark:bg-slate-900/95">
+                  <DialogHeader>
+                    <div className="flex justify-center mb-4">
+                      <Image src="/rocket.png" alt="Rocket" width={64} height={64} />
+                    </div>
+                    <DialogTitle className="text-2xl font-bold text-center">We're Launching Soon!</DialogTitle>
+                    <DialogDescription className="text-slate-600 mt-2 text-center">
+                      Thank you for trusting us with your loved ones' care. ❤️
+                      <br />
+                      Our team is working tirelessly to bring this feature to life. Your patience means everything to us.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex justify-center mt-6">
+                    <DialogClose asChild>
+                      <Button className="bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600 px-8 py-2 rounded-md">
+                        Got It!
+                      </Button>
+                    </DialogClose>
+                  </div>
+                </DialogContent>
+              </Dialog>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 px-8 py-4">
+                    <Users className="w-5 h-5 mr-2" />
+                    Learn More
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="w-[90%] rounded-sm flex flex-col items-center justify-center text-cente p-8  dark:bg-slate-900/95">
+                  <DialogHeader>
+                    <div className="flex justify-center mb-4">
+                      <Image src="/rocket.png" alt="Rocket" width={64} height={64} />
+                    </div>
+                    <DialogTitle className="text-2xl font-bold text-center">We're Launching Soon!</DialogTitle>
+                    <DialogDescription className="text-slate-600 mt-2 text-center">
+                      Thank you for trusting us with your loved ones' care. ❤️
+                      <br />
+                      Our team is working tirelessly to bring this feature to life. Your patience means everything to us.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex justify-center mt-6">
+                    <DialogClose asChild>
+                      <Button className="bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600 px-8 py-2 rounded-md">
+                        Got It!
+                      </Button>
+                    </DialogClose>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </motion.div>
+        </div>
+      </section>
       </div>
+      <Footer2/>
     </>
   )
 }
