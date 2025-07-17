@@ -113,14 +113,14 @@ export default function SupportPage() {
      
 
       {/* Hero Section */}
-      <section className="py-20">
+      <section className="pt-10">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto space-y-8"
           >
-            <Badge className="bg-gradient-to-r from-blue-900 to-red-900 text-white dark:text-blue-200border-0 px-4 py-2">
+            <Badge className="bg-gradient-to-r from-blue-900 to-red-900 text-white  dark:text-blue-200border-0 px-4 py-2">
               🆘 Support Center
             </Badge>
             <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent">
@@ -144,7 +144,7 @@ export default function SupportPage() {
       </section>
 
       {/* Support Options */}
-      <section className="py-20">
+      <section className="pt-20">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {supportOptions.map((option, index) => (
@@ -216,7 +216,7 @@ export default function SupportPage() {
                 }`}
               />
             </CollapsibleTrigger>
-            <CollapsibleContent className="p-6 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-b-lg border-t border-slate-200 dark:border-slate-600">
+            <CollapsibleContent className="p-6 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg border-t border-slate-200 dark:border-slate-600">
               {faq.answer}
             </CollapsibleContent>
           </Collapsible>
