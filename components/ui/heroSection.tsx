@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import {
   Phone,
   Heart,
@@ -31,51 +31,65 @@ import {
   PhoneIcon,
   Play,
   Calendar,
-  HeartIcon
-} from "lucide-react"
+  HeartIcon,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
-import { Badge } from "@/components/ui/badge"
-import ComingSoonDialog from "@/components/ComingSoonDialog"
+import { Badge } from "@/components/ui/badge";
+import ComingSoonDialog from "@/components/ComingSoonDialog";
 
-
-import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { useRef } from "react"
-import { useTheme } from "@/components/theme-provider"
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { useRef } from "react";
+import { useTheme } from "@/components/theme-provider";
 import MedicalHeroCard from "@/components/ui/right"; // ✅ CORRECT if default exported
 
-
 // Counter Animation Component
-function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+function AnimatedCounter({
+  end,
+  duration = 2000,
+}: {
+  end: number;
+  duration?: number;
+}) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView) {
-      let startTime: number
+      let startTime: number;
       const animate = (currentTime: number) => {
-        if (!startTime) startTime = currentTime
-        const progress = Math.min((currentTime - startTime) / duration, 1)
-        setCount(Math.floor(progress * end))
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        setCount(Math.floor(progress * end));
         if (progress < 1) {
-          requestAnimationFrame(animate)
+          requestAnimationFrame(animate);
         }
-      }
-      requestAnimationFrame(animate)
+      };
+      requestAnimationFrame(animate);
     }
-  }, [isInView, end, duration])
+  }, [isInView, end, duration]);
 
-  return <span ref={ref}>{count.toLocaleString()}</span>
+  return <span ref={ref}>{count.toLocaleString()}</span>;
 }
 
-
-
 // Animated Section Component
-function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+function AnimatedSection({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <motion.div
@@ -87,29 +101,30 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
     >
       {children}
     </motion.div>
-  )
+  );
 }
 
 export default function HomePage() {
-  const { theme, setTheme } = useTheme()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
-  const [currentPoster, setCurrentPoster] = useState(0)
+  const { theme, setTheme } = useTheme();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentPoster, setCurrentPoster] = useState(0);
 
-  const heroRef = useRef(null)
+  const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
   const backgroundPosters = [
     {
       title: "Emergency Response",
       subtitle: "AI-Powered • Instant Care",
       gradient: "from-red-500 via-red-600 to-orange-500",
-      bgImage: "linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)",
       icon: Truck,
       pattern: "emergency",
     },
@@ -117,7 +132,8 @@ export default function HomePage() {
       title: "Home Care Services",
       subtitle: "Verified • Compassionate",
       gradient: "from-blue-500 via-blue-600 to-cyan-500",
-      bgImage: "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)",
       icon: Users,
       pattern: "homecare",
     },
@@ -125,7 +141,8 @@ export default function HomePage() {
       title: "Expert Consultations",
       subtitle: "Specialists • Video Calls",
       gradient: "from-green-500 via-emerald-600 to-teal-500",
-      bgImage: "linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%)",
       icon: Stethoscope,
       pattern: "consultation",
     },
@@ -133,17 +150,19 @@ export default function HomePage() {
       title: "Emotional Support",
       subtitle: "AI Companion • Peer Care",
       gradient: "from-purple-500 via-violet-600 to-indigo-500",
-      bgImage: "linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%)",
       icon: HeartHandshake,
       pattern: "support",
     },
-  ]
+  ];
 
   const services = [
     {
       icon: Truck,
       title: "Emergency Medical Response",
-      description: "Instant triage, ambulance dispatch, and auto-routing to available hospital beds",
+      description:
+        "Instant triage, ambulance dispatch, and auto-routing to available hospital beds",
       gradient: "from-red-500 to-red-600",
       features: [
         "AI-powered symptom assessment in under 30 seconds",
@@ -157,7 +176,8 @@ export default function HomePage() {
     {
       icon: Users,
       title: "Verified Home Care",
-      description: "Background-checked caregivers for elderly daily monitoring and companionship",
+      description:
+        "Background-checked caregivers for elderly daily monitoring and companionship",
       gradient: "from-blue-500 to-blue-600",
       features: [
         "Trained nurses & caretakers with verified credentials",
@@ -171,7 +191,8 @@ export default function HomePage() {
     {
       icon: Stethoscope,
       title: "Doctor Consultation",
-      description: "Affordable teleconsultations and second opinions from verified specialists",
+      description:
+        "Affordable teleconsultations and second opinions from verified specialists",
       gradient: "from-red-500 via-red-400 to-blue-500",
       features: [
         "Video/audio consultations with specialists",
@@ -185,7 +206,8 @@ export default function HomePage() {
     {
       icon: Heart,
       title: "Post-Surgery Care",
-      description: "ICU-trained nurses for home recovery with personalized care plans",
+      description:
+        "ICU-trained nurses for home recovery with personalized care plans",
       gradient: "from-blue-500 via-blue-400 to-red-500",
       features: [
         "ICU-trained home nurses available 24/7",
@@ -199,7 +221,8 @@ export default function HomePage() {
     {
       icon: HeartHandshake,
       title: "Emotional Support",
-      description: "Bada Bhai/Badi Behen program for students and AI emotional companions",
+      description:
+        "Bada Bhai/Badi Behen program for students and AI emotional companions",
       gradient: "from-red-500 to-red-600",
       features: [
         "Peer mentoring support for students",
@@ -213,7 +236,8 @@ export default function HomePage() {
     {
       icon: Building2,
       title: "Hospital Bed Booking",
-      description: "Real-time bed availability and instant booking across partner hospitals",
+      description:
+        "Real-time bed availability and instant booking across partner hospitals",
       gradient: "from-blue-500 to-blue-600",
       features: [
         "Real-time bed tracking across 500+ hospitals",
@@ -224,7 +248,7 @@ export default function HomePage() {
       ],
       emotion: "No more calling hospitals in panic.",
     },
-  ]
+  ];
 
   const testimonials = [
     {
@@ -251,52 +275,53 @@ export default function HomePage() {
       rating: 5,
       image: "/placeholder.svg?height=60&width=60",
     },
-  ]
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [testimonials.length])
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentPoster((prev) => (prev + 1) % backgroundPosters.length)
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [backgroundPosters.length])
-
-
+      setCurrentPoster((prev) => (prev + 1) % backgroundPosters.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [backgroundPosters.length]);
 
   return (
     <>
       {/* Enhanced Hero Section with Dynamic Background */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden min-h-screen flex items-center pt-20"
+        className="relative overflow-hidden min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-[55vh] flex items-center pt-20 pb-0"
       >
         {/* Dynamic Background Poster */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentPoster}
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 z-0"
+            className="absolute inset-0 z-0 overflow-hidden"
             style={{
               background: backgroundPosters[currentPoster].bgImage,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
             }}
           >
             {/* Animated Pattern Overlay */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 overflow-hidden">
               {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
                   animate={{
-                    x: [0, Math.random() * 100 - 50, 0],
-                    y: [0, Math.random() * 100 - 50, 0],
+                    x: [0, Math.random() * 50 - 25, 0],
+                    y: [0, Math.random() * 50 - 25, 0],
                     rotate: [0, 360],
                     scale: [1, 1.2, 1],
                   }}
@@ -335,7 +360,7 @@ export default function HomePage() {
 
         {/* Main Container */}
         <div className="relative z-10  container mx-auto px-5 py-0">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -452,16 +477,18 @@ export default function HomePage() {
                 className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
               >
                 <ComingSoonDialog
-                triggerLabel={
-              <>
-                Emergency Care
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-              </>
-              }
-                triggerIcon={<HeartIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
-                size="lg"
-                className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              />
+                  triggerLabel={
+                    <>
+                      Emergency Care
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                    </>
+                  }
+                  triggerIcon={
+                    <HeartIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  }
+                  size="lg"
+                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                />
 
                 <Button
                   size="lg"
@@ -472,7 +499,6 @@ export default function HomePage() {
                   Watch Demo
                 </Button>
               </motion.div>
-
 
               {/* Stats */}
               <motion.div
@@ -536,7 +562,7 @@ export default function HomePage() {
       </section>
 
       {/* Emergency Banner */}
-      <AnimatedSection className="relative bg-gradient-to-r from-red-600 via-red-500 to-blue-600 py-6 sm:py-8 overflow-hidden">
+      <AnimatedSection className="relative bg-gradient-to-r from-red-600 via-red-500 to-blue-600 py-2 sm:py-3 md:py-2 lg:py-3 overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <motion.div
           animate={{ x: ["-100%", "100%"] }}
@@ -544,33 +570,38 @@ export default function HomePage() {
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
         />
         <div className="relative container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center justify-between text-white gap-4 lg:gap-6">
+          <div className="flex flex-col lg:flex-row items-center justify-between text-white gap-2 lg:gap-6">
             <div className="flex items-center space-x-4 sm:space-x-6">
               <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="-mt-14 md:-mt-12 lg:-mt-14 "
+                // className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
               >
                 <Clock className="w-6 h-6 sm:w-8 sm:h-8" />
               </motion.div>
               <div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1">Smart Emergency Response</h3>
+                <h3 className="text-xl sm:text-xs md:text-lg lg:text-2xl font-bold mb-1">
+                  
+                  Smart Emergency Response
+                </h3>
                 <p className="text-red-100 text-sm sm:text-base lg:text-lg">
-                  One-Tap Hospital Bed Booking with Ventilator & ICU + Instant Ambulance in Minutes and real-time Bed Booking + Guardian Notification
+                  One-Tap Hospital Bed Booking with Ventilator & ICU + Instant
+                  Ambulance in Minutes and real-time Bed Booking + Guardian
+                  Notification
                 </p>
               </div>
             </div>
             <ComingSoonDialog
-              triggerLabel={
-            <>
-              Call Emergency: +91 7084910836
-            </>
-            }
-              triggerIcon={<Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
+              triggerLabel={<>Call Emergency: +91 7084910836</>}
+              triggerIcon={<Phone className="w-4 h-4 mr-2" />}
               size="lg"
-              className="bg-white text-red-600 hover:bg-red-50 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
+              className="bg-white text-red-500 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
             />
-
           </div>
         </div>
       </AnimatedSection>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -6,7 +6,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ComingSoonDialog from "@/components/ComingSoonDialog";
 import DialogFooter from "@/components/ui/DialogFooter";
-
 
 import {
   FaFacebookF,
@@ -33,7 +32,7 @@ export default function Footer() {
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className="absolute top-10 left-10 w-20 h-20 text-red-400/50"
         >
-          <FaTruck className="w-full h-full" />
+          <FaTruck className="w-[80%] h-[80%]" />
         </motion.div>
 
         <motion.div
@@ -41,7 +40,7 @@ export default function Footer() {
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           className="absolute top-40 right-20 w-20 h-20 text-blue-400/30"
         >
-          <FaHeart className="w-full h-full" />
+          <FaHeart className="w-[80%] h-[80%]" />
         </motion.div>
 
         <motion.div
@@ -49,7 +48,7 @@ export default function Footer() {
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-40 left-1/4 w-12 h-12 text-red-400/30"
         >
-          <FaStethoscope className="w-full h-full" />
+          <FaStethoscope className="w-[80%] h-[80%]" />
         </motion.div>
 
         <motion.div
@@ -57,7 +56,7 @@ export default function Footer() {
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-20 right-1/3 w-14 h-14 text-blue-400/30"
         >
-          <FaRunning className="w-full h-full" />
+          <FaRunning className="w-[80%] h-[80%]" />
         </motion.div>
 
         <motion.div
@@ -65,26 +64,29 @@ export default function Footer() {
           transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
           className="absolute top-1/3 left-1/2 w-10 h-10 text-red-400/30"
         >
-          <FaBolt className="w-full h-full" />
+          <FaBolt className="w-[80%] h-[80%]" />
         </motion.div>
       </div>
 
-      <div className="relative px-4 py-10">
+      <div className="relative px-4 py-8">
         <div className="container mx-auto text-center">
           {/* Brand & CTA */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-10"
+            className="mb-16"
           >
-            <motion.div whileHover={{ scale: 1.05 }} className="inline-block mb-3">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="inline-block mb-3"
+            >
               <Image
                 src="/footerlogonew.svg"
                 alt="CareSaathi Logo"
                 width={240}
                 height={80}
-                className="h-16 w-auto brightness-0 invert mx-auto"
+                className="h-14 w-auto brightness-0 invert mx-auto"
               />
             </motion.div>
 
@@ -103,20 +105,20 @@ export default function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="text-slate-300 text-lg max-w-2xl mx-auto mb-8"
+              className="text-slate-300 text-lg max-w-2xl mx-auto mb-0"
             >
-              Reimagining healthcare with compassion, technology, and the warmth of family care.
+              Reimagining healthcare with compassion, technology, and the warmth
+              of family care.
             </motion.p>
 
-            {/* Emergency CTA */}
-            
+           
           </motion.div>
 
           {/* Footer Links Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-8 text-left max-w-6xl mx-auto">
+          <div className=" grid  grid-cols-2 md:grid-cols-4 gap-12 mb-2 text-left max-w-6xl mx-auto">
             {/* Main Pages */}
             <div>
-              <h4 className="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2">
+              <h4 className="text-xl font-bold text-blue-400 mb-2 flex items-center gap-2">
                 <FaBolt />
                 Main Pages
               </h4>
@@ -141,7 +143,7 @@ export default function Footer() {
 
             {/* Support */}
             <div>
-              <h4 className="text-xl font-bold text-red-400 mb-4 flex items-center gap-2">
+              <h4 className="text-xl font-bold text-red-400 mb-2 flex items-center gap-2">
                 <FaHeart />
                 Support
               </h4>
@@ -166,7 +168,7 @@ export default function Footer() {
 
             {/* Company */}
             <div>
-              <h4 className="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2">
+              <h4 className="text-xl font-bold text-blue-400 mb-2 flex items-center gap-2">
                 <FaTruck />
                 Company
               </h4>
@@ -191,7 +193,7 @@ export default function Footer() {
 
             {/* Connect & Download */}
             <div>
-              <h4 className="text-xl font-bold text-red-400 mb-4 flex items-center gap-2">
+              <h4 className="text-xl font-bold text-red-400 mb-0 flex items-center gap-2">
                 <FaPhoneAlt />
                 Connect
               </h4>
@@ -208,35 +210,38 @@ export default function Footer() {
               </div>
 
               {/* Download Buttons */}
-              <div className="flex flex-col -ml-3 md:flex-row items-start gap-4">
+              <div className="flex flex-col ml-5 sm:flex-col items-center sm:items-start justify-center sm:justify-start gap-0.5 w-full overflow-visible">
                 {/* Google Play Button */}
-                <DialogFooter
-                  triggerLabel={
-                    <img
-                      src="/google-play.png"
-                      alt="Get it on Google Play"
-                      className="h-14 w-auto max-w-[180px]"
-                    />
-                  }
-                />
+                <div className="flex-shrink-0 w-full sm:w-auto max-w-[160px] sm:max-w-[180px] lg:max-w-none">
+                  <DialogFooter
+                    triggerLabel={
+                      <img
+                        src="/google-play.png"
+                        alt="Get it on Google Play"
+                        className="h-10 sm:h-12 w-full object-contain"
+                      />
+                    }
+                  />
+                </div>
 
                 {/* App Store Button */}
-                <DialogFooter
-                  triggerLabel={
-                    <img
-                      src="/app-store.png"
-                      alt="Download on the App Store"
-                      className="h-14 w-auto max-w-[180px]"
-                    />
-                  }
-                />
+                <div className="flex-shrink-0 w-full sm:w-auto max-w-[160px] sm:max-w-[180px] lg:max-w-none">
+                  <DialogFooter
+                    triggerLabel={
+                      <img
+                        src="/app-store.png"
+                        alt="Download on the App Store"
+                        className="h-10 sm:h-12 w-full object-contain"
+                      />
+                    }
+                  />
+                </div>
               </div>
-              
 
               {/* Follow Us Section - Positioned after Google Play in mobile view */}
-              <div className="w-full order-5 sm:mt-0 sm:order-none mt-8 ">
-                <div className="flex flex-col items-center sm:items-center">
-                  <p className="text-slate-300 font-medium mb-2 mt-1">Follow Us</p>
+              <div className="w-full order-5 sm:mt-0 sm:order-none  mr-4 sm:mr-4">
+                <div className="flex flex-col mr-10 items-center sm:items-center">
+                  <p className="text-slate-300 font-medium mb-3">Follow Us</p>
                   <div className="flex space-x-4">
                     <a
                       href="https://www.facebook.com/people/Caresaathi/61577145807693/"
@@ -280,13 +285,19 @@ export default function Footer() {
             </div>
           </div>
           {/* Legal Links */}
-          <div className="mb-4">
+          <div className="mb-2">
             <div className="flex justify-center space-x-6 text-slate-300 text-sm">
-              <Link href="/terms" className="hover:text-red-400 transition-colors">
+              <Link
+                href="/terms"
+                className="hover:text-red-400 transition-colors"
+              >
                 Terms and Conditions
               </Link>
               <span>|</span>
-              <Link href="/privacy" className="hover:text-red-400 transition-colors">
+              <Link
+                href="/privacy"
+                className="hover:text-red-400 transition-colors"
+              >
                 Privacy Policy
               </Link>
             </div>
@@ -298,13 +309,17 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
-            className="border-t border-red-700 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm"
+            className="border-t border-red-700 pt-4 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm"
           >
             <p className="mb-4 md:mb-0">
               &copy; 2025 CareSaathi. All rights reserved. Made with{" "}
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="text-red-500 inline-block"
               >
                 ❤️

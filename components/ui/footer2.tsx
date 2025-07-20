@@ -35,7 +35,7 @@ export default function Footer() {
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                     className="absolute top-10 left-10 w-20 h-20 text-red-400/50"
                 >
-                    <FaTruck className="w-full h-full" />
+                    <FaTruck className="w-[70%] h-[70%]" />
                 </motion.div>
 
                 <motion.div
@@ -43,7 +43,7 @@ export default function Footer() {
                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                     className="absolute top-40 right-20 w-20 h-20 text-blue-400/30"
                 >
-                    <FaHeart className="w-full h-full" />
+                    <FaHeart className="w-[70%] h-[70%]" />
                 </motion.div>
 
                 <motion.div
@@ -51,7 +51,7 @@ export default function Footer() {
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                     className="absolute bottom-40 left-1/4 w-12 h-12 text-red-400/30"
                 >
-                    <FaStethoscope className="w-full h-full" />
+                    <FaStethoscope className="w-[70%] h-[70%]" />
                 </motion.div>
 
                 <motion.div
@@ -59,7 +59,7 @@ export default function Footer() {
                     transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                     className="absolute bottom-20 right-1/3 w-14 h-14 text-blue-400/30"
                 >
-                    <FaRunning className="w-full h-full" />
+                    <FaRunning className="w-[70%] h-[70%]" />
                 </motion.div>
 
                 <motion.div
@@ -67,7 +67,7 @@ export default function Footer() {
                     transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
                     className="absolute top-1/3 left-1/2 w-10 h-10 text-red-400/30"
                 >
-                    <FaBolt className="w-full h-full" />
+                    <FaBolt className="w-[70%] h-[70%]" />
                 </motion.div>
             </div>
 
@@ -195,33 +195,38 @@ export default function Footer() {
                             </div>
 
                             {/* Download Buttons */}
-                            <div className="flex flex-col -ml-3 md:flex-row items-start gap-4">
-                                {/* Google Play Button */}
-                                <DialogFooter
-                                    triggerLabel={
-                                        <img
-                                            src="/google-play.png"
-                                            alt="Get it on Google Play"
-                                            className="h-12 w-auto max-w-[180px]"
-                                        />
-                                    }
-                                />
+                                         <div className="flex flex-col  ml-5 sm:flex-col items-center sm:items-start justify-center sm:justify-start gap-0.5 w-full overflow-visible">
+                                           {/* Google Play Button */}
+                                           <div className="flex-shrink-0 w-full sm:w-auto max-w-[160px] sm:max-w-[180px] lg:max-w-none">
+                                             <DialogFooter
+                                               triggerLabel={
+                                                 <img
+                                                   src="/google-play.png"
+                                                   alt="Get it on Google Play"
+                                                   className="h-10 sm:h-12 w-full object-contain"
+                                                 />
+                                               }
+                                             />
+                                           </div>
+                           
+                                           {/* App Store Button */}
+                                           <div className="flex-shrink-0 w-full sm:w-auto max-w-[160px] sm:max-w-[180px] lg:max-w-none">
+                                             <DialogFooter
+                                               triggerLabel={
+                                                 <img
+                                                   src="/app-store.png"
+                                                   alt="Download on the App Store"
+                                                   className="h-10 sm:h-12 w-full object-contain"
+                                                 />
+                                               }
+                                             />
+                                           </div>
+                                         </div>
 
-                                {/* App Store Button */}
-                                <DialogFooter
-                                    triggerLabel={
-                                        <img
-                                            src="/app-store.png"
-                                            alt="Download on the App Store"
-                                            className="h-12 w-auto max-w-[180px]"
-                                        />
-                                    }
-                                />
-                            </div>
 
                             {/* Follow Us Section - Positioned after Google Play in mobile view */}
                             <div className="w-full order-5 sm:mt-0 sm:order-none mt-8 ">
-                                <div className="flex flex-col items-center sm:items-center">
+                                <div className="flex flex-col items-center mr-10 sm:items-center">
                                     <p className="text-slate-300 font-medium mb-2 mt-1">Follow Us</p>
                                     <div className="flex space-x-4">
                                         <a

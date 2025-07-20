@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { motion } from "framer-motion"
-import {Phone,Mail,MapPin,Clock,Heart,Send,MessageCircle} from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Heart, Send, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -42,81 +42,80 @@ export default function ContactPage() {
   ]
 
   interface ContactFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  service: string;
-  message: string;
-}
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    service: string;
+    message: string;
+  }
 
-const [formData, setFormData] = useState<ContactFormData>({
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  service: "",
-  message: "",
-});
-
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-
-  Swal.fire({
-    title: "Sending...",
-    text: "Please wait while we submit your message.",
-    allowOutsideClick: false,
-    didOpen: () => {
-      Swal.showLoading();
-    },
+  const [formData, setFormData] = useState<ContactFormData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
 
-  try {
-    const res = await fetch("http://localhost:5000/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    const data = await res.json();
-
-    if (res.status === 201) 
-      {
-      Swal.fire({
-        icon: "success",
-        title: "Message Sent",
-        text: data.message || "Thank you for contacting us. We will get back to you soon!",
-      });
-
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
-      });
-
-    } else if (res.status === 409) {
-      Swal.fire({
-        icon: "warning",
-        title: "Already Registered",
-        text: data.message || "This email is already registered with us.",
-      });
-
-    } else {
-      throw new Error(data.error || "Something went wrong");
-    }
-
-  } catch (err: any) {
-    console.error(err);
     Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: err.message || "Something went wrong. Please try again later.",
+      title: "Sending...",
+      text: "Please wait while we submit your message.",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
-  }
-};
+
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 201) {
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent",
+          text: data.message || "Thank you for contacting us. We will get back to you soon!",
+        });
+
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+
+      } else if (res.status === 409) {
+        Swal.fire({
+          icon: "warning",
+          title: "Already Registered",
+          text: data.message || "This email is already registered with us.",
+        });
+
+      } else {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+    } catch (err: any) {
+      console.error(err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.message || "Something went wrong. Please try again later.",
+      });
+    }
+  };
 
 
 
@@ -201,15 +200,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <Card className="text-center h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-800/50 group cursor-pointer">
                     <CardHeader className="space-y-4">
                       <div
-                        className={`w-16 h-16 bg-gradient-to-br ${
-                          method.color === "red"
+                        className={`w-16 h-16 bg-gradient-to-br ${method.color === "red"
                             ? "from-red-500 to-red-600"
                             : method.color === "green"
-                            ? "from-green-500 to-green-600"
-                            : method.color === "blue"
-                            ? "from-blue-500 to-blue-600"
-                            : "from-purple-500 to-purple-600"
-                        } rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}
+                              ? "from-green-500 to-green-600"
+                              : method.color === "blue"
+                                ? "from-blue-500 to-blue-600"
+                                : "from-purple-500 to-purple-600"
+                          } rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}
                       >
                         <method.icon className="w-8 h-8 text-white" />
                       </div>
@@ -230,7 +228,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               ))}
             </div>
 
-            
+
           </div>
         </section>
 
@@ -281,44 +279,44 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 </div>
 
                 <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <h5 className="text-xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent mb-8">
-                Office Hours
-              </h5>
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="bg-white dark:bg-slate-800/50 shadow-lg border-0">
-                  <CardContent className="p-6 text-center">
-                    <Clock className="w-12 h-12 text-blue-500 mx-auto mb-1" />
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-2">
-                      General Support
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400">
-                      Mon-Fri: 9:00 AM - 6:00 PM
-                    </p>
-                    <p className="text-slate-600 dark:text-slate-400">
-                      Sat: 10:00 AM - 4:00 PM
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg border-0">
-                  <CardContent className="p-6 text-center">
-                    <Phone className="w-12 h-12 text-white mx-auto mb-2" />
-                    <h3 className="text-lg font-bold mb-2">
-                      Emergency Support
-                    </h3>
-                    <p>24/7 Available</p>
-                    <p>365 Days a Year</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
-          </div>
-          </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center max-w-3xl mx-auto"
+                  >
+                    <h5 className="text-xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent mb-8">
+                      Office Hours
+                    </h5>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <Card className="bg-white dark:bg-slate-800/50 shadow-lg border-0">
+                        <CardContent className="p-6 text-center">
+                          <Clock className="w-12 h-12 text-blue-500 mx-auto mb-1" />
+                          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-2">
+                            General Support
+                          </h3>
+                          <p className="text-slate-600 dark:text-slate-400">
+                            Mon-Fri: 9:00 AM - 6:00 PM
+                          </p>
+                          <p className="text-slate-600 dark:text-slate-400">
+                            Sat: 10:00 AM - 4:00 PM
+                          </p>
+                        </CardContent>
+                      </Card>
+                      <Card className="bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg border-0">
+                        <CardContent className="p-6 text-center">
+                          <Phone className="w-12 h-12 text-white mx-auto mb-2" />
+                          <h3 className="text-lg font-bold mb-2">
+                            Emergency Support
+                          </h3>
+                          <p>24/7 Available</p>
+                          <p>365 Days a Year</p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, x: 50 }}

@@ -18,7 +18,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/ui/navbar";
+import Header from "@/components/ui/header";
+import Footer2 from "@/components/ui/footer2";
 
 // Define interfaces for props and data structures
 interface Job {
@@ -146,7 +147,7 @@ export default function CareersPage() {
   return (
     // This div correctly uses the global theme. No local state needed.
     <div className="bg-slate-50 dark:bg-slate-950">
-      <Navbar />
+      <Header/>
       <main className="container mx-auto px-4 pt-32 pb-24">
         <section className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-red-500 pb-2">
@@ -211,6 +212,7 @@ export default function CareersPage() {
           darkMode={isDarkModeForModal}
         />
       )}
+    <Footer2/>
     </div>
   );
 }
