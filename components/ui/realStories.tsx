@@ -61,7 +61,7 @@ export default function RealStories() {
   }, [])
 
   return (
-    <AnimatedSection className="pt-12 pb-0 sm:py-10 lg:py-15 bg-gradient-to-br bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50">
+    <AnimatedSection className="pt-12 pb-0 sm:py-10 lg:py-15 bg-gradient-to-br bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -70,11 +70,24 @@ export default function RealStories() {
           className="text-center mb-12 sm:mb-16"
         >
           <Badge className="bg-gradient-to-r from-blue-900 to-red-900 text-white dark:text-blue-200 border-0 px-3 py-1.5 text-xs sm:text-sm font-medium hover:scale-105 transition-transform cursor-pointer">
-            💝 Real Stories, Real Saathis
+            💝 Real Stories, Real Saathi
           </Badge>
-          <h2 className="mt-5 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent mb-4 sm:mb-6">
-            Because they're not patients — they're family
-          </h2>
+          {/* <h2 className="mt-5 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent leading-tight mb-4 sm:mb-6">
+  Because they're not patients — they're family
+</h2> */}
+  <div className="w-full overflow-visible">
+  <h2
+    className="text-center mt-5 text-xl sm:text-3xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent leading-[1.2]"
+    style={{
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
+    Because they're not patients — they're family
+  </h2>
+</div>
+
+          
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">

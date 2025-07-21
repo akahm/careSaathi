@@ -39,7 +39,7 @@ const services = [
     icon: Truck,
     title: "Emergency Medical Response",
     description:
-      "Instant triage, ambulance dispatch, and auto-routing to available hospital beds",
+      "Instant triage, ambulance dispatch and auto-routing to available hospital beds",
     gradient: "from-red-500 to-red-600",
     features: [
       "AI-powered symptom assessment in under 30 seconds",
@@ -58,7 +58,7 @@ const services = [
     gradient: "from-blue-500 to-blue-600",
     features: [
       "Trained nurses & caretakers with verified credentials",
-      "Daily health monitoring with digital reports",
+      "Daily health monitoring with digital reports on App",
       "Medicine reminders and health tracking",
       "Emotional companionship and social interaction",
       "Family updates with photo/video reports",
@@ -70,10 +70,10 @@ const services = [
     title: "Doctor Consultation",
     description:
       "Affordable teleconsultations and second opinions from verified specialists",
-    gradient: "from-red-500 via-red-400 to-blue-500",
+    gradient: "from-red-500  to-red-500",
     features: [
-      "Video/audio consultations with specialists",
-      "Second opinion services for critical decisions",
+      "Video/audio call consultations with  health specialists",
+      "Second opinion services for critical decisions & surgeries",
       "Digital medical records with cloud storage",
       "Elder-friendly interface with large fonts",
       "Prescription delivery to your doorstep",
@@ -85,7 +85,7 @@ const services = [
     title: "Post-Surgery Care",
     description:
       "ICU-trained nurses for home recovery with personalized care plans",
-    gradient: "from-blue-500 via-blue-400 to-red-500",
+    gradient: "from-blue-500  to-blue-500",
     features: [
       "ICU-trained home nurses available 24/7",
       "Medicine management and wound dressing",
@@ -227,9 +227,9 @@ export default function CoreServices() {
 
   return (
     <>
-      <AnimatedSection id="services" className="py-6 sm:py-6 lg:py-6 relative">
+      <AnimatedSection id="services" className="py-6 sm:py-6 lg:py-6  relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-50/50 to-white/50 dark:from-slate-800/50 dark:to-slate-900/50" />
-        <div className="relative container mx-auto px-4">
+        <div className="relative container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -239,7 +239,7 @@ export default function CoreServices() {
             <Badge className="bg-gradient-to-r from-blue-900 to-red-900 text-white dark:text-blue-200 border-0 px-3 py-2 text-xs sm:text-sm font-medium hover:scale-105 transition-transform cursor-pointer mb-4 sm:mb-6">
               🩺 Comprehensive Care Solutions
             </Badge>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent mb-3 sm:mb-6">
+            <h2 className="text-2xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-blue-800 to-red-600 bg-clip-text text-transparent mb-3 sm:mb-6">
               Our Core Services
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
@@ -274,7 +274,7 @@ export default function CoreServices() {
                       />
 
                       {/* Card with default soft shadow */}
-                      <Card className="relative z-10 border-0 shadow-[0_4px_20px_rgba(0,0,0,0.1)] bg-gradient-to-br from-white to-red-50/30 dark:from-slate-800 dark:to-slate-700 overflow-hidden cursor-pointer h-full flex flex-col transition-shadow duration-500 sm:min-h-[420px] md:min-h-[460px] lg:min-h-0">
+                      <Card className="relative z-10 border-0 shadow-[0_4px_20px_rgba(0,0,0,0.1)] bg-white dark:bg-slate-900/95 overflow-hidden cursor-pointer h-full flex flex-col transition-shadow duration-500 sm:min-h-[420px] md:min-h-[460px] lg:min-h-0">
                         <CardHeader className="relative flex-shrink-0 p-3 sm:p-6">
                           <motion.div
                             whileHover={{ scale: 1.1, rotate: 5 }}

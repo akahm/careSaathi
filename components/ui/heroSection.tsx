@@ -163,7 +163,7 @@ useEffect(() => {
       {/* Enhanced Hero Section with Dynamic Background */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden min-h-screen  flex items-center pt-20"
+        className="relative overflow-hidden min-h-screen bg-gradient-to-b from-slate-50/50 to-white/50 dark:from-slate-800/50 dark:to-slate-900/50  flex items-center pt-20"
       >
         {/* Dynamic Background Poster */}
         <AnimatePresence mode="wait">
@@ -220,14 +220,14 @@ useEffect(() => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-6 text-center lg:text-left lg:space-y-8 lg:pl-6"
+              className="space-y-6 text-center lg:text-center lg:space-y-8 lg:pl-6"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <Badge className="bg-gradient-to-r from-blue-900 to-red-900 text-white dark:text-blue-200 border-0 px-3 py-1.5 text-xs sm:text-sm font-medium hover:scale-105 transition-transform cursor-pointer">
+                <Badge className="bg-gradient-to-r from-blue-900 text-center to-red-900 text-white dark:text-blue-200 border-0 px-3 py-1.5 text-xs sm:text-sm font-medium hover:scale-105 transition-transform cursor-pointer">
                   🏥 India's Most Trusted Healthcare Platform
                   <Award className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
                 </Badge>
@@ -239,7 +239,7 @@ useEffect(() => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
+                  className="text-xl sm:text-2xl text-center md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
                 >
                   <motion.span
                     initial={{ opacity: 0, x: -30 }}
@@ -253,7 +253,7 @@ useEffect(() => {
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
-                    className="block bg-gradient-to-r from-red-700 via-red-400 to-blue-600 bg-clip-text text-transparent"
+                    className="block bg-gradient-to-r from-red-800 via-red-600 to-blue-600 bg-clip-text text-transparent"
                   >
                     in Care
                   </motion.span>
@@ -263,7 +263,7 @@ useEffect(() => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="text-md sm:text-lg lg:text-xl font-semibold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
+                  className="text-md sm:text-lg lg:text-xl text-center font-semibold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
                 >
                   "Apno ke liye apno jaisa saathi"
                 </motion.p>
@@ -272,7 +272,7 @@ useEffect(() => {
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.6 }}
-  className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl mx-auto text-center"
+  className="text-sm sm:text-base lg:text-md text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl mx-auto text-center"
 >
   Experience India's next-gen healthcare platform with
   AI-powered emergency response, verified home care, and 24/7
@@ -328,7 +328,7 @@ useEffect(() => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
+                className="flex flex-col sm:flex-row px-4 gap-3 sm:gap-4 justify-center"
               >
                 <ComingSoonDialog
                   triggerLabel={
@@ -480,49 +480,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Emergency Banner (remains unchanged) */}
-      <AnimatedSection className="relative bg-gradient-to-r from-red-600 via-red-500 to-blue-600 py-4 sm:py-10 overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <motion.div
-          animate={{ x: ["-100%", "100%"] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
-        />
-        <div className="relative container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center justify-between text-white gap-2 lg:gap-6">
-            <div className="flex items-center space-x-4 sm:space-x-6">
-              <motion.div
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="-mt-14 md:-mt-12 lg:-mt-14 "
-                // className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
-              >
-                <Clock className="w-5 h-5 sm:w-8 sm:h-8" />
-              </motion.div>
-              <div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1">Smart Emergency Response</h3>
-                <p className="text-red-100 text-sm sm:text-base lg:text-md">
-                  One-Tap Hospital Bed Booking with Ventilator & ICU + Instant Ambulance in Minutes and real-time Bed Booking + Guardian Notification
-                </p>
-              </div>
-            </div>
-            <ComingSoonDialog
-              triggerLabel={
-                <>
-                  Call Emergency: +91 7084910836
-                </>
-              }
-              triggerIcon={<Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
-              size="lg"
-              className="bg-white text-red-500 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
-            />
-          </div>
-        </div>
-      </AnimatedSection>
+         
     </>
   );
 }

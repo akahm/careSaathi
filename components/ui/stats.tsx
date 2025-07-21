@@ -58,8 +58,8 @@ export default function Stats() {
       <div className="relative container mx-auto px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
           {[
-            { number: 10000, label: "Happy Families", suffix: "+" },
-            { number: 500, label: "Partner Hospitals", suffix: "+" },
+            { number: 500, label: "Happy Families", suffix: "+" },
+            { number: 50, label: "Partner Hospitals", suffix: "+" },
             { number: 99.9, label: "Success Rate", suffix: "%" },
             { number: 24, label: "Hour Support", suffix: "/7" },
           ].map((stat, index) => (
