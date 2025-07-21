@@ -16,16 +16,13 @@ export default function HomePage() {
       {/* Header Section */}
       <Header />
 
-      {/* Hero Section */}
       <HeroSection />
-  <EmergencyBanner /> {/* Emergency Banner Section */}
-      {/* Core Services Section */}
+  <EmergencyBanner /> 
+  
       <CoreServices />
 
-      {/* Stats Section */}
       <Stats />
 
-      {/* Real Stories Section */}
       <RealStories />
 
       {/* CTA Section */}
