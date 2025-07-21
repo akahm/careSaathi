@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Header from "@/components/ui/header"
 
+
 export default function PrivacyPage() {
   const [darkMode, setDarkMode] = useState(false)
   const [isClient, setIsClient] = useState(false)
@@ -208,7 +209,7 @@ export default function PrivacyPage() {
       </section>
 
       {/* Privacy Principles */}
-      <section className="pt-8 pb-20">
+      <section className="pt-6 pb-10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -252,7 +253,7 @@ export default function PrivacyPage() {
       </section>
 
       {/* Privacy Details Sections */}
-      <section className="py-20">
+      <section className="py-10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-12">
             {privacySections.map((block, idx) => (
@@ -295,6 +296,7 @@ export default function PrivacyPage() {
         </div>
       </section>
     </div>
+  
     </>
   )
 }

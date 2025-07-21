@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -31,7 +32,8 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
-import Navbar from "@/components/ui/navbar"
+import Header from "@/components/ui/header"
+import Footer2 from "@/components/ui/footer2"
 
 export default function SupportPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -104,7 +106,7 @@ export default function SupportPage() {
 
   return (
     <>
-    <Navbar/>
+    <Header/>
     <div
   className=" pt-[72px] min-h-screen transition-colors duration-300 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50"
 >
@@ -244,6 +246,7 @@ export default function SupportPage() {
     </DialogContent>
   </Dialog>
 </div>
+<Footer2/>
 </>
   )
 }

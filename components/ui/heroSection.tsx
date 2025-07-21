@@ -26,26 +26,32 @@ function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: num
 
   useEffect(() => {
     if (isInView) {
-      let startTime: number
+      let startTime: number;
       const animate = (currentTime: number) => {
-        if (!startTime) startTime = currentTime
-        const progress = Math.min((currentTime - startTime) / duration, 1)
-        setCount(Math.floor(progress * end))
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        setCount(Math.floor(progress * end));
         if (progress < 1) {
-          requestAnimationFrame(animate)
+          requestAnimationFrame(animate);
         }
-      }
-      requestAnimationFrame(animate)
+      };
+      requestAnimationFrame(animate);
     }
-  }, [isInView, end, duration])
+  }, [isInView, end, duration]);
 
-  return <span ref={ref}>{count.toLocaleString()}</span>
+  return <span ref={ref}>{count.toLocaleString()}</span>;
 }
 
 // Animated Section Component
-function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+function AnimatedSection({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <motion.div
@@ -57,7 +63,7 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
     >
       {children}
     </motion.div>
-  )
+  );
 }
 
 // --- Data for CareSaathiNetworkHero part ---
@@ -99,7 +105,7 @@ useEffect(() => {
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
-  })
+  });
 
   // These transforms are for the main hero section's background elements (if any are still using them)
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
@@ -110,7 +116,8 @@ useEffect(() => {
       title: "Emergency Response",
       subtitle: "AI-Powered • Instant Care",
       gradient: "from-red-500 via-red-600 to-orange-500",
-      bgImage: "linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%)",
       icon: Truck,
       pattern: "emergency",
     },
@@ -118,7 +125,8 @@ useEffect(() => {
       title: "Home Care Services",
       subtitle: "Verified • Compassionate",
       gradient: "from-blue-500 via-blue-600 to-cyan-500",
-      bgImage: "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)",
       icon: Users,
       pattern: "homecare",
     },
@@ -126,7 +134,8 @@ useEffect(() => {
       title: "Expert Consultations",
       subtitle: "Specialists • Video Calls",
       gradient: "from-green-500 via-emerald-600 to-teal-500",
-      bgImage: "linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%)",
       icon: Stethoscope,
       pattern: "consultation",
     },
@@ -134,7 +143,8 @@ useEffect(() => {
       title: "Emotional Support",
       subtitle: "AI Companion • Peer Care",
       gradient: "from-purple-500 via-violet-600 to-indigo-500",
-      bgImage: "linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%)",
+      bgImage:
+        "linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%)",
       icon: HeartHandshake,
       pattern: "support",
     },
@@ -159,21 +169,21 @@ useEffect(() => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentPoster}
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0 z-0"
             
           >
             {/* Animated Pattern Overlay */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 overflow-hidden">
               {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
                   animate={{
-                    x: [0, Math.random() * 100 - 50, 0],
-                    y: [0, Math.random() * 100 - 50, 0],
+                    x: [0, Math.random() * 50 - 25, 0],
+                    y: [0, Math.random() * 50 - 25, 0],
                     rotate: [0, 360],
                     scale: [1, 1.2, 1],
                   }}
@@ -479,12 +489,17 @@ useEffect(() => {
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
         />
         <div className="relative container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center justify-between text-white gap-4 lg:gap-6">
+          <div className="flex flex-col lg:flex-row items-center justify-between text-white gap-2 lg:gap-6">
             <div className="flex items-center space-x-4 sm:space-x-6">
               <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="-mt-14 md:-mt-12 lg:-mt-14 "
+                // className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
               >
                 <Clock className="w-5 h-5 sm:w-8 sm:h-8" />
               </motion.div>
@@ -503,7 +518,7 @@ useEffect(() => {
               }
               triggerIcon={<Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
               size="lg"
-              className="bg-white text-red-600 hover:bg-red-50 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
+              className="bg-white text-red-500 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
             />
           </div>
         </div>

@@ -70,7 +70,7 @@ export default function EmergencyPage() {
 
   return (
     <>
-     <Header/>
+      <Header />
       <div className="relative overflow-hidden w-full bg-gradient-to-br bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50
        dark:border-slate-700/50 shadow-lg">
 
@@ -109,39 +109,40 @@ export default function EmergencyPage() {
                   <Phone className="w-5 h-5 mr-2" />
                   Call Emergency: +91 7084910836
                 </Button>
-               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 px-8 py-4   ">
-                      
-                 
-                  Quick Emergency Form
-                
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="w-[90%] rounded-sm flex flex-col items-center justify-center text-cente p-8  dark:bg-slate-900/95">
-                    <DialogHeader>
-                      <div className="flex justify-center mb-4 ">
-                        <Image src="/rocket.png" alt="Rocket" width={64} height={64} />
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 px-8 py-4   ">
+
+
+                        Quick Emergency Form
+
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="w-[90%] rounded-sm flex flex-col items-center justify-center text-cente p-8  dark:bg-slate-900/95">
+                      <DialogHeader>
+                        <div className="flex justify-center mb-4 ">
+                          <Image src="/rocket.png" alt="Rocket" width={64} height={64} />
+                        </div>
+                        <DialogTitle className="text-2xl font-bold text-center">We're Launching Soon!</DialogTitle>
+                        <DialogDescription className="text-slate-600 mt-2 text-center">
+                          Thank you for trusting us with your loved ones' care. ❤️
+                          <br />
+                          Our team is working tirelessly to bring this feature to life. Your patience means everything to us.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="flex justify-center mt-6">
+                        <DialogClose asChild>
+                          <Button className="bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600 px-8 py-2 rounded-md">
+                            Got It!
+                          </Button>
+                        </DialogClose>
                       </div>
-                      <DialogTitle className="text-2xl font-bold text-center">We're Launching Soon!</DialogTitle>
-                      <DialogDescription className="text-slate-600 mt-2 text-center">
-                        Thank you for trusting us with your loved ones' care. ❤️
-                        <br />
-                        Our team is working tirelessly to bring this feature to life. Your patience means everything to us.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="flex justify-center mt-6">
-                      <DialogClose asChild>
-                        <Button className="bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600 px-8 py-2 rounded-md">
-                          Got It!
-                        </Button>
-                      </DialogClose>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-               </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
               </div>
+
             </motion.div>
           </div>
         </section>
@@ -163,7 +164,7 @@ export default function EmergencyPage() {
               </p>
             </motion.div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
   {emergencySteps.map((step, index) => (
     <motion.div
       key={step.step}
@@ -171,8 +172,9 @@ export default function EmergencyPage() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
+      className="flex" // Makes all motion.divs the same height
     >
-      <div className="relative group hover:-translate-y-2 transition-transform duration-500 w-full">
+      <div className="relative group hover:-translate-y-2 transition-transform duration-500 w-full flex flex-col h-full">
 
         {/* Glowing border effect */}
         <div
@@ -185,18 +187,20 @@ export default function EmergencyPage() {
           }}
         />
 
-        {/* Card content on top */}
-        <Card className="relative z-10 text-center h-full border border-slate-100 dark:border-slate-700 shadow-2xl bg-white dark:bg-slate-800 rounded-2xl">
+        {/* Card content */}
+        <Card className="relative z-10 flex flex-col justify-between text-center h-full border border-slate-100 dark:border-slate-700 shadow-2xl bg-white dark:bg-slate-800 rounded-2xl">
           <CardHeader className="space-y-4">
             <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto">
               <step.icon className="w-6 h-6 text-white" />
             </div>
-            <div className="text-lg font-bold text-red-600 dark:text-red-400">Step {step.step}</div>
+            <div className="text-lg font-bold text-red-600 dark:text-red-400">
+              Step {step.step}
+            </div>
             <CardTitle className="text-base font-bold text-slate-800 dark:text-slate-200">
               {step.title}
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="flex flex-col items-center flex-grow">
             <p className="text-sm text-slate-600 dark:text-slate-400">{step.description}</p>
             <Badge variant="outline" className="text-xs mt-2">{step.time}</Badge>
           </CardContent>
@@ -206,11 +210,12 @@ export default function EmergencyPage() {
   ))}
 </div>
 
+
           </div>
         </section>
 
         {/* Emergency Form */}
-        <section className="py-12 sm:py-20 ">
+        <section className="py-8 sm:py-10 ">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-start">
               <motion.div
@@ -250,7 +255,40 @@ export default function EmergencyPage() {
                     </div>
                   </div>
                 </div>
-                
+                <section className="pb-20 sm:py-0">
+                  <div className="container mx-auto px-4 pt-20">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      className="text-center max-w-3xl mx-auto"
+                    >
+                      <h2 className="text-2xl mb-2 sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-800 to-blue-600 bg-clip-text text-transparent  ">
+                        Emergency Contacts
+                      </h2>
+                      <div className="grid  sm:grid-cols-2 gap-6 sm:gap-8">
+                        <Card className="bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg border-0">
+                          <CardContent className="p-6 text-center">
+                            <Phone className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold mb-2">Emergency Hotline</h3>
+                            <p className="text-red-100 mb-4 text-sm sm:text-base">24/7 Medical Emergency</p>
+                            <p className="text-xl sm:text-2xl font-bold">+91 7084910836</p>
+                          </CardContent>
+                        </Card>
+
+                        <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg border-0">
+                          <CardContent className="p-6 text-center">
+                            <Heart className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold mb-2">Support Line</h3>
+                            <p className="text-blue-100 mb-4 text-sm sm:text-base">General Health Support</p>
+                            <p className="text-xl sm:text-2xl font-bold">+91 7084910836</p>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </motion.div>
+                  </div>
+                </section>
+
               </motion.div>
 
               <motion.div
@@ -272,8 +310,8 @@ export default function EmergencyPage() {
                               type="button"
                               onClick={() => setEmergencyType(type.id)}
                               className={`p-2 sm:p-3 rounded-lg border-2 transition-all text-xs sm:text-sm ${emergencyType === type.id
-                                  ? "border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300"
-                                  : "border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-400"
+                                ? "border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300"
+                                : "border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-400"
                                 }`}
                             >
                               <type.icon className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-1" />
@@ -350,44 +388,12 @@ export default function EmergencyPage() {
           </div>
         </section>
 
-        {/* Emergency Contacts */}
-        <section className="pb-20 sm:py-0">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-800 to-blue-600 bg-clip-text text-transparent mb-2 sm:mb-4">
-                Emergency Contacts
-              </h2>
-              <div className="grid pb-10 sm:grid-cols-2 gap-6 sm:gap-8">
-                <Card className="bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg border-0">
-                  <CardContent className="p-6 text-center">
-                    <Phone className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4" />
-                    <h3 className="text-lg sm:text-xl font-bold mb-2">Emergency Hotline</h3>
-                    <p className="text-red-100 mb-4 text-sm sm:text-base">24/7 Medical Emergency</p>
-                    <p className="text-xl sm:text-2xl font-bold">+91 7084910836</p>
-                  </CardContent>
-                </Card>
 
-                <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg border-0">
-                  <CardContent className="p-6 text-center">
-                    <Heart className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4" />
-                    <h3 className="text-lg sm:text-xl font-bold mb-2">Support Line</h3>
-                    <p className="text-blue-100 mb-4 text-sm sm:text-base">General Health Support</p>
-                    <p className="text-xl sm:text-2xl font-bold">+91 7084910836</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+
 
       </div>
-      <Footer2/>
-      
+      <Footer2 />
+
     </>
   )
 }
