@@ -140,12 +140,7 @@ useEffect(() => {
     },
   ]
 
-  useEffect(() => {
-    const posterInterval = setInterval(() => {
-      setCurrentPoster((prev) => (prev + 1) % backgroundPosters.length)
-    }, 4000)
-    return () => clearInterval(posterInterval)
-  }, [backgroundPosters.length])
+
 
 
   return (
@@ -153,7 +148,7 @@ useEffect(() => {
       {/* Enhanced Hero Section with Dynamic Background */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden min-h-screen  flex items-center pt-20"
+        className="relative overflow-hidden min-h-screen flex items-center pt-20"
       >
         {/* Dynamic Background Poster */}
         <AnimatePresence mode="wait">
@@ -203,8 +198,8 @@ useEffect(() => {
         </AnimatePresence>
 
         {/* Main Content Container of Hero Section */}
-       <div className="relative z-10 container mx-auto px-5 py-0 flex flex-col justify-center h-full">
-          <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-2 lg:gap-8 items-center">
+        <div className="relative z-10 container mx-auto px-5 py-0">
+          <div className="grid lg:grid-cols-2 gap-2 lg:gap-8 items-center">
             {/* Left Content (Text, Badge, Buttons, Stats) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -258,16 +253,16 @@ useEffect(() => {
                   "Apno ke liye apno jaisa saathi"
                 </motion.p>
 
-               <motion.p
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.6 }}
-  className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl mx-auto text-center"
->
-  Experience India's next-gen healthcare platform with
-  AI-powered emergency response, verified home care, and 24/7
-  emotional support.
-</motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl"
+                >
+                  Experience India's next-gen healthcare platform with
+                  AI-powered emergency response, verified home care, and 24/7
+                  emotional support.
+                </motion.p>
               </div>
 
               {/* Poster Info */}
@@ -434,7 +429,7 @@ useEffect(() => {
                           className="
                             w-16 h-16 sm:w-22 sm:h-22 md:w-22 md:h-22 lg:w-24 lg:h-24
                             rounded-full shadow-lg flex flex-col items-center justify-center
-                            border-2 border-purple-200/50 dark:text-white dark:border-slate-700/30 dark:bg-slate-800/70 shadow-lg  p-1 sm:p-1.5  lg:mt-[20px] lg:ml-[10px] md:mt-[-10px] text-center z-10
+                            border-2 border-purple-200/50 dark:text-white  p-1 sm:p-1.5  lg:mt-[20px] lg:ml-[10px] md:mt-[-10px] text-center z-10
                           "
                         >
                           <node.icon className="w-5 h-5 sm:w-6 h-6 md:w-7 h-7 lg:w-10 h-10 text-blue-600 mb-1" />
